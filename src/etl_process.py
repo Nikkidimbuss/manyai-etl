@@ -1,3 +1,4 @@
+import os
 from pony import orm
 from models import db, ManyAIEmployee, ManyAICustomer, ManyAIPrompt
 from data_readers import (
@@ -13,10 +14,10 @@ import json
 def setup_database():
     db.bind(
         provider='mysql',
-        host='europa.ashley.work',
-        user='student_bi77cc',
-        password='iE93F2@8EhM@1zhD&u9M@K',
-        db='student_bi77cc'
+        host=os.getenv('DB_HOST'),
+        user=os.getenv('DB_USER'),
+        password=os.getenv('DB_PASSWORD'),
+        db=os.getnv('DB_NAME')
     )
     db.generate_mapping(create_tables=True)
 
