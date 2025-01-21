@@ -12,3 +12,17 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
+
+
+
+
+from etl_process import setup_database, load_all_data
+
+if __name__ == "__main__":
+    try:
+        print("Start of ETL process")
+        setup_database()
+        load_all_data()
+        print("ETL process completed successfully")
+    except Exception as e:
+        print(f"An error occurred: {e}")
